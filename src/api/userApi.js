@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:3000/users";
+const API_URL = "https://6991745a6279728b01548b48.mockapi.io/users/:endpoint";
 
 export const getUsers = async () => {
   const res = await axios.get(API_URL);
