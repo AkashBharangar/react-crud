@@ -1,16 +1,78 @@
-# React + Vite
+# React CRUD – User Management System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A scalable React-based CRUD application with configuration-driven dynamic form rendering, robust validation, and modular API architecture. Designed for extensibility and maintainability.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Setup Instructions
 
-## React Compiler
+### 1️⃣ Clone the repository
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+git clone https://github.com/your-username/react-crud.git
+cd react-crud
+```
 
-## Expanding the ESLint configuration
+### 2️⃣ Install dependencies
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+npm install
+```
+
+### 3️⃣ Start Mock API (JSON Server)
+
+```bash
+npx json-server --watch db.json --port 3000
+```
+
+### 4️⃣ Start Frontend
+
+```bash
+npm run dev
+```
+
+### Application URLs
+
+Frontend:  
+http://localhost:5173  
+
+Mock API:  
+http://localhost:3000/users  
+
+---
+
+## ➕ How to Add New Fields
+
+The form is configuration-driven.
+
+Open:
+
+```
+src/config/userFormConfig.js
+```
+
+Add a new field object:
+
+```js
+{
+  name: "address",
+  label: "Address",
+  type: "text",
+  required: false,
+}
+```
+
+No other UI or backend changes are required.
+
+The validation schema is generated dynamically based on this configuration.
+
+---
+
+## 🏗 Assumptions & Design Decisions
+
+- The application uses JSON Server as a mock backend.
+- Form rendering is configuration-driven to ensure extensibility.
+- Validation is handled using Yup + React Hook Form.
+- Uniqueness checks (email & phone) are enforced at the application level.
+- API logic is separated into a dedicated module for maintainability.
+- Designed with clean component separation and scalability in mind.
